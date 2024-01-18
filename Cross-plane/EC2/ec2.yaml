@@ -8,10 +8,8 @@ spec:
     tags:
       Name: Crossplane-k8s
     ami: ami-067d1e60475437da2
-    blockDeviceMappings:
-     - deviceName: /dev/sdx
-       ebs:
-         volumeSize: 10
+    ebsBlockDevice :
+      volumeSize: 10
     instanceType: t2.micro
     keyName: crossplane-key-pair
   providerConfigRef:
