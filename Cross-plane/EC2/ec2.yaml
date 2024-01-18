@@ -1,0 +1,18 @@
+apiVersion: ec2.aws.upbound.io/v1beta1
+kind: Instance
+metadata:
+  name: crossplane-instance
+spec:
+  forProvider:
+    region: us-east-1
+    tags:
+      Name: Crossplane-k8s
+    ami: ami-067d1e60475437da2
+    blockDeviceMappings:
+     - deviceName: /dev/sdx
+       ebs:
+         volumeSize: 10
+    instanceType: t2.micro
+    keyName: crossplane-key-pair
+  providerConfigRef:
+    name: default
