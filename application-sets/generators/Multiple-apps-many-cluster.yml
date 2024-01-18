@@ -9,7 +9,7 @@ spec:
         generators:
           # git generator, 'child' #1
           - git:
-              repoURL: https://github.com/Dev-Rohitb/gitops-argocd-advanced-demo.git
+              repoURL: https://github.com/Dev-Rohitb/Gitops-Argo_Adventures.git
               revision: HEAD
               directories:
                 - path: application-sets/example-apps/*
@@ -21,7 +21,7 @@ spec:
     spec:
       project: 'default'
       source:
-        repoURL: https://github.com/Dev-Rohitb/gitops-argocd-advanced-demo.git
+        repoURL: https://github.com/Dev-Rohitb/Gitops-Argo_Adventures.git
         targetRevision: HEAD
         path: '{{path}}'
       destination:
