@@ -12,7 +12,7 @@ spec:
               repoURL: https://github.com/Dev-Rohitb/Gitops-Argo_Adventures.git
               revision: HEAD
               directories:
-                - path: application-sets/example-apps/*
+                - path: application-sets/Bootstrap-apps/*
           # cluster generator, 'child' #2
           - clusters: {}
   template:
