@@ -17,7 +17,7 @@ spec:
       source:
         repoURL: https://github.com/Dev-Rohitb/Gitops-Argo_Adventures.git
         targetRevision: HEAD
-        path: ./Gitops-Services/Kubernetes-Dashbaord
+        path: ./application-sets/example-apps/kubernetes-dashboard
       
       # Destination cluster and namespace to deploy the application
       destination:
