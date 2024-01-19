@@ -6,10 +6,11 @@ spec:
   forProvider:
     region: us-east-1
     tags:
-      Name: Crossplane-k8s
+     - Name: Crossplane-k8s
+     - Owner: Rohit 
     ami: ami-067d1e60475437da2
-    ebsBlockDevice :
-      volumeSize: 10
+    rootBlockDevice :
+      - volumeSize: 20
     instanceType: t2.micro
     keyName: crossplane-key-pair
   providerConfigRef:
