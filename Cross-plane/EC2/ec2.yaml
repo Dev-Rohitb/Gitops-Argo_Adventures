@@ -4,14 +4,17 @@ metadata:
   name: crossplane-instance
 spec:
   forProvider:
-    region: us-east-1
-    tags:
-     - Name: Crossplane-k8s
-     - Owner: Rohit 
-    ami: ami-067d1e60475437da2
+    region: us-east-1 # For Desired AWS Region
+    tags: # For Desired Tags
+      Name: crossplane-instance
+      Owner: Rohit
+    ami: ami-067d1e60475437da2 # For Desired AMI ID
     rootBlockDevice :
-      - volumeSize: 20
-    instanceType: t2.micro
+      - volumeSize: 20  # For Desired Volume Size
+    instanceType: t2.micro # For Desired Instance Type
+    vpcSecurityGroupIds:
+      - sg-04b1a7ce8f072a440 # For Actual Security Group ID
+      - sg-06122688cd0a0913a
     keyName: crossplane-key-pair
   providerConfigRef:
     name: default
