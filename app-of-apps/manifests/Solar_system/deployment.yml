@@ -14,7 +14,7 @@ spec:
         app: solar-app
     spec:
       containers:
-      - name: solar_system
+      - name: solar-system
         image: borkarrohit/solar_system:latest
         ports:
         - containerPort: 80
