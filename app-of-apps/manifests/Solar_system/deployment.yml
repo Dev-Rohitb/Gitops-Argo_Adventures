@@ -17,4 +17,4 @@ spec:
       - name: solar-system
         image: borkarrohit/solar_system:latest
         ports:
-        - containerPort: 80
+        - containerPort: 3000
