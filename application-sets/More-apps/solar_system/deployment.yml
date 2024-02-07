@@ -1,0 +1,20 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: solar-system
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: solar-app
+  template:
+    metadata:
+      labels:
+        app: solar-app
+    spec:
+      containers:
+      - name: solar-system
+        image: borkarrohit/solar_system:latest
+        ports:
+        - containerPort: 3000
