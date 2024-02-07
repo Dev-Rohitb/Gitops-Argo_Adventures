@@ -1,32 +1,29 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: cluster-git
+  name: multi-cluster-application-set
+  namespace: argocd
 spec:
   generators:
-    # matrix 'parent' generator
-    - matrix:
-        generators:
-          # git generator, 'child' #1
-          - git:
-              repoURL: https://github.com/Dev-Rohitb/Gitops-Argo_Adventures.git
-              revision: HEAD
-              directories:
-                - path: ./application-sets/More-apps/*
-          # cluster generator, 'child' #2
-          - clusters: {}
-  template:
+  - clusters: {} # Automatically use all clusters defined within Argo CD
+  template:      
     metadata:
-      name: '{{path.basename}}-{{name}}'
+      name: '{{name}}-kubernetes-dashbaord'
     spec:
-      project: 'default'
+      # The project the application belongs to.
+      project: default
+
+      # Source of the application manifests
       source:
         repoURL: https://github.com/Dev-Rohitb/Gitops-Argo_Adventures.git
         targetRevision: HEAD
-        path: '{{path}}'
+        path: ./application-sets/Bootstrap-apps/kubernetes-dashboard
+      
+      # Destination cluster and namespace to deploy the application
       destination:
         server: '{{server}}'
-        namespace: '{{path.basename}}'
+        namespace: kubernetes-dashboard
+
       # Sync policy
       syncPolicy:
         syncOptions:
@@ -34,4 +31,4 @@ spec:
         automated: # automated sync by default retries failed attempts 5 times with following delays between attempts ( 5s, 10s, 20s, 40s, 80s ); retry controlled using `retry` field.
           prune: true # Specifies if resources should be pruned during auto-syncing ( false by default ).
           selfHeal: true # Specifies if partial app sync should be executed when resources are changed only in target Kubernetes cluster and no git change detected ( false by default ).
- 
+      
