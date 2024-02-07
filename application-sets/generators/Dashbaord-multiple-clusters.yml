@@ -17,7 +17,7 @@ spec:
       source:
         repoURL: https://github.com/Dev-Rohitb/Gitops-Argo_Adventures.git
         targetRevision: HEAD
-        path: ./application-sets/Bootstrap-app
+        path: application-sets/Bootstrap-app
       
       # Destination cluster and namespace to deploy the application
       destination:
