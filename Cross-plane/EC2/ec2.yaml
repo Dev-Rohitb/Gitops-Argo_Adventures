@@ -4,7 +4,7 @@ metadata:
   name: ec2
   # You'll usually want to add your resources to the argocd namespace.
   namespace: argocd
-  # Add a this finalizer ONLY if you want these to cascade delete.
+  # # Add a this finalizer ONLY if you want these to cascade delete.
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
@@ -26,6 +26,12 @@ spec:
   syncPolicy:
     syncOptions:
       - CreateNamespace=true  
+    retry:
+      limit: 1
+      backoff:
+        duration: 5s
+        factor: 2
+        maxDuration: 1m    
     automated: # automated sync by default retries failed attempts 5 times with following delays between attempts ( 5s, 10s, 20s, 40s, 80s ); retry controlled using `retry` field.
       prune: true # Specifies if resources should be pruned during auto-syncing ( false by default ).
       selfHeal: true # Specifies if partial app sync should be executed when resources are changed only in target Kubernetes cluster and no git change detected ( false by default ).
